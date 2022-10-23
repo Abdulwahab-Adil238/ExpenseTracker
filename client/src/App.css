@@ -1,0 +1,26 @@
+@font-face {
+  font-family: Fira;
+  src: url(../public/font/FiraCode-Regular.ttf);
+}
+
+root {
+  --color-yellow: #f9c74f;
+  --color-purple: #9d4edd;
+}
+
+*>* {
+  font-family: Fira;
+}
+
+.App {
+  text-align: center;
+  padding: 2em 0;
+}
+
+.bg-yellow {
+  background-color: var(--color-yellow);
+}
+
+.bg-purple {
+  background-color: var(--color-purple);
+}
