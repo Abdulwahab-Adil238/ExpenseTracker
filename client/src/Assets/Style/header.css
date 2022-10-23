@@ -1,0 +1,18 @@
+.App {
+    margin: 2rem;
+    padding: .3em 0px;
+    background-color: var(--color-yellow);
+
+}
+
+.container {
+    margin: auto;
+    border-bottom: 2px solid blue;
+    max-width: 85%;
+
+}
+
+.container h1 {
+    color: black;
+    text-align: center;
+}

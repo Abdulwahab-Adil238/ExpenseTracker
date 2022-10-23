@@ -3,7 +3,9 @@ function App() {
   return (
     <>
       <div className='App'>
-        <h1>This is the expense Tracker </h1>
+        <div className="container">
+          <h1>Expense Tracker </h1>
+        </div>
       </div>
     </>
   );

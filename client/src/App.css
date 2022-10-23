@@ -1,21 +1,14 @@
+@import url(./Assets/Style/default.css);
+@import url(./Assets/Style/color.css);
+@import url(./Assets/Style/header.css);
+
 @font-face {
   font-family: Fira;
-  src: url(../public/font/FiraCode-Regular.ttf);
+  src: url(../public/font/FiraCode-Light.ttf);
 }
 
-root {
-  --color-yellow: #f9c74f;
-  --color-purple: #9d4edd;
-}
 
-*>* {
-  font-family: Fira;
-}
 
-.App {
-  text-align: center;
-  padding: 2em 0;
-}
 
 .bg-yellow {
   background-color: var(--color-yellow);
