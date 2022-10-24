@@ -1,0 +1,91 @@
+.MainContainer {
+    width: 85vw;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 1rem;
+}
+
+.form_box {
+    width: 40%;
+}
+
+.form_div {
+    flex: 1;
+    margin-left: 1rem;
+    padding: 1rem;
+    width: 100%;
+}
+
+.Form_heading {
+    text-align: center;
+    color: deeppink;
+    margin-bottom: 1rem;
+
+}
+
+.form_container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-height: 100%;
+}
+
+.form_container div:not(div:last-of-type),
+.form_container select {
+    padding: .7rem;
+    border-radius: .6rem;
+    box-shadow: -1px 3px 5px 0px white, 1px 3px 7px 0px rgba(14, 230, 100, 0.877);
+}
+
+.form_container input,
+.form_container select,
+button {
+    background-color: transparent;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    outline: none;
+}
+
+option {
+    font-weight: bold;
+    color: dodgerblue;
+    font-size: 1.2rem;
+}
+
+
+.submit_btn {
+
+    margin: 2rem auto;
+}
+
+.form_container input::placeholder,
+.form_container select::placeholder {
+    color: rgb(27, 5, 72);
+    font-size: 1.3rem;
+}
+
+.form_container button {
+    width: 18rem;
+    white-space: nowrap;
+    font-size: 1.5rem;
+    color: white;
+    background-color: rgb(83, 33, 123);
+    border: 1px solid gold;
+    padding: .7rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    border-radius: .5rem;
+    transition: all .6s ease;
+    cursor: pointer;
+}
+
+.form_container button:hover {
+    color: rgb(169, 162, 125);
+
+    outline: none;
+    box-shadow: -1px 3px 5px 0px rgba(233, 228, 228, 0.754), 1px 3px 7px 0px rgba(143, 171, 154, 0.877);
+
+}

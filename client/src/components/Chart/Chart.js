@@ -3,7 +3,7 @@ import lebalData from "./lebalData";
 import './Chart.css'
 import { Chart, ArcElement } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import Label from '../Partials/Label';
+import Label from '../Partials/lebal/Label';
 Chart.register(ArcElement)
 
 const config = {

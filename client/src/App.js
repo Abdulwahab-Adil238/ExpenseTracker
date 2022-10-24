@@ -1,4 +1,5 @@
 import Chart from './components/Chart/Chart'
+import Form from './components/Form/Form';
 function App() {
   return (
     <>
@@ -7,8 +8,11 @@ function App() {
           <h1 id="Heading">Expense Tracker </h1>
         </div>
       </div>
-      <div className='container'>
+      <div className='MainContainer'>
+        {/* chart  */}
         <Chart />
+        {/* form */}
+        <Form />
       </div>
     </>
   );

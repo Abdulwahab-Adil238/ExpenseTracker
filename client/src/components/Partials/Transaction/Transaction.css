@@ -1,0 +1,11 @@
+.list_title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.List_conatiner {
+    margin-bottom: 1rem;
+
+}

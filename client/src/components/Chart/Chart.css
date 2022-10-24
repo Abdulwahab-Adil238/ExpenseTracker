@@ -2,6 +2,7 @@
     width: 450px;
     height: fit-content;
     color: lightseagreen;
+    flex: 1;
 
 
 }
@@ -30,11 +31,13 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    color: black;
 }
 
 .chart_box h3 span {
     display: block;
     text-align: center;
+    color: lightseagreen;
 }
 
 .label_title {
