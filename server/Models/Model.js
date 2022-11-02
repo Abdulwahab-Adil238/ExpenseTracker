@@ -5,7 +5,7 @@ const schema = mongoose.Schema;
 // Model for the Category 
 const category_Schema = schema({
      type: { type: String, default: "Investment" },
-     Color: { type: String, default: "#FCBE44" }
+     color: { type: String, default: "#FCBE44" }
 })
 
 // Model for the transaction

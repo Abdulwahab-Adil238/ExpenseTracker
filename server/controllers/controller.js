@@ -1,7 +1,107 @@
+const { model } = require('mongoose');
+const Model = require('../Models/Model');
 
-const get_categories = (req, res) => {
-    res.send("Getting the Controller get Categories")
+// destracturing the Models
+const { categories, transactions } = Model;
+
+//   post:http://localhost:3001/api/categories
+const create_categories = async (req, res) => {
+
+    // creating category 
+    const Create_Category = new categories({
+        type: "Expense",
+        color: "#C43095"
+    })
+    await Create_Category.save((err) => {
+        if (!err) return res.json("Category Created");
+        return res.status(400).json({ message: "Error While creating Categories" })
+    })
+
 }
+
+//   get:http://localhost:3001/api/categories
+const get_categories = async (req, res) => {
+
+    // finding the all categories which are created
+    const myCategories = await categories.find({});
+    const filter = await myCategories.map(Item => Object.assign({}, { type: Item.type, color: Item.color }))
+    res.json(filter);
+
+}
+//   post:http://localhost:3001/api/transaction
+const create_transaction = async (req, res) => {
+    const { name, type, amount } = req.body;
+
+    //    passing the user data to transaction schema
+    const myTransaction = await new transactions({
+        name,
+        type,
+        amount,
+        date: new Date()
+    })
+
+    // check error while creating transaction
+    await myTransaction.save((err) => {
+        if (!err) return res.json(myTransaction);
+        return res.status(400).json({ message: `Error while creating transaction ${err}` })
+    });
+}
+
+//   get:http://localhost:3001/api/transaction
+const get_transaction = async (req, res) => {
+    let AllTransaction = await transactions.find({});
+    res.status(200).send(AllTransaction);
+}
+
+//   delete:http://localhost:3001/api/transaction/:id
+const delete_transaction = async (req, res) => {
+
+    if (!req.body) return res.status(400)
+        .json({ message: "Request Body not found" });
+
+    await transactions.findByIdAndDelete(req.params.id, (err) => {
+        if (!err) res.status(200).json("record Deleted");
+    }).clone().catch((err) => {
+        return res.json(400).json({ message: "Error while deleting Trnasaction record" })
+    })
+
+}
+//   get:http://localhost:3001/api/labels
+async function get_labels(req, res) {
+    transactions.aggregate([
+        {
+            $lookup: {
+                from: "categories",
+                localField: "type",
+                foreignField: "type",
+                as: "categories_info"
+            },
+        },
+        {
+            $unwind: "$categories_info"
+        }
+    ]).then(result => {
+        const data = result.map((keys) => Object.assign({}, {
+            _id: keys._id,
+            name: keys._name,
+            type: keys.type,
+            amount: keys.amount,
+            color: keys.categories_info['color']
+        }))
+        res.json(data)
+    }).catch(error => {
+        res.status(400).json({ message: "Look up connection error" })
+    })
+
+
+
+}
+
 module.exports = {
-    get_categories
+    create_categories,
+    get_categories,
+    create_transaction,
+    get_transaction,
+    delete_transaction,
+    get_labels
 }

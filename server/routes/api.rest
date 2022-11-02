@@ -1,0 +1,25 @@
+GET http://localhost:3001/api/categories
+###
+POST http://localhost:3001/api/categories
+###
+
+POST http://localhost:3001/api/transaction
+Content-Type: application/json
+
+{
+	"name":"Adiljan50",
+   "type": "Saving",
+   "amount":1000
+}
+###
+
+GET  http://localhost:3001/api/transaction
+
+###
+DELETE   http://localhost:3001/api/transaction/6357728ebf8eaf69f5ad8296
+
+###
+GET  http://localhost:3001//api/labels
+
+
+
