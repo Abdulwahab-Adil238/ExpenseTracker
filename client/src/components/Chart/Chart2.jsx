@@ -3,7 +3,7 @@ import { Chart, ArcElement } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import Lebal from '../Partials/lebal/Label';
 import { default as api } from '../../store/apiSlice';
-import { getLabels, chart_Data, getTotal } from '../../Lodash/helper'
+import { getLabels, chart_Data, getTotal } from '../../data_lodash/helper'
 Chart.register(ArcElement)
 
 const Chart2 = ({ myData }) => {
