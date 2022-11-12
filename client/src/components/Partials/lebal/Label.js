@@ -2,7 +2,6 @@ import React from 'react'
 
 const label = ({ lebelItem, index }) => {
     return (
-
         <div className='labels_conatiner' key={index} style={{
             borderLeft: `.2rem solid ${lebelItem.color}`,
             borderBottom: ` 4px solid ${lebelItem.color}`
@@ -11,7 +10,7 @@ const label = ({ lebelItem, index }) => {
                 <div className='label_sideColor' style={{ backgroundColor: lebelItem.color }}></div>
                 <h3>{lebelItem.type ?? "No items"}</h3>
             </div>
-            <h3 className=''>{lebelItem.percent ? `${lebelItem.percent}%` : ""}</h3>
+            <h3 className=''>{lebelItem.percent ? `${Math.round(lebelItem.percent)}%` : 0}</h3>
         </div>
     );
 }

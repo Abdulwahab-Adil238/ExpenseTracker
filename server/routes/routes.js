@@ -7,7 +7,7 @@ const {
      get_categories,
      create_transaction,
      get_transaction,
-     delete_transaction,
+     delete_Transaction,
      get_labels
 } = Controller;
 
@@ -22,8 +22,8 @@ routes.route('/api/transaction')
      .get(get_transaction)
 
 
-routes.route('/api/transaction/:id')
-     .delete(delete_transaction)
+routes.route('/api/transaction')
+     .delete(delete_Transaction)
 
 routes.route('/api/labels')
      .get(get_labels);

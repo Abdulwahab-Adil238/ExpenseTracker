@@ -11,8 +11,8 @@ const category_Schema = schema({
 // Model for the transaction
 const transaction_Schema = schema({
      name: { type: String, default: "Anonymous" },
-     type: { type: String, default: "Investment" },
      amount: { type: Number, default: 0 },
+     type: { type: String, default: "Investment" },
      date: { type: Date, default: Date.now() }
 })
 

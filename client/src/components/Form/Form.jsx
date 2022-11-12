@@ -1,19 +1,34 @@
 import React from 'react'
 import { useFormik } from 'formik'
 import List from '../list/List'
+// import axios from 'axios'
+import { default as api } from '../../store/apiSlice';
+
 const initialValues = {
     trans_type: "",
-    Amount: "",
-    options: ""
+    Amount: 0,
+    options: "Investment"
 }
-const Form = () => {
+
+const Form = ({ listData }) => {
+
+    const [addTransaction] = api.useAddTransactionMutation();
     const { values, handleBlur, handleChange, handleSubmit } = useFormik({
         initialValues,
-        onSubmit: (value, action) => {
-            console.log(value)
+        onSubmit: async (value, action) => {
+            addTransaction({
+                name: value.trans_type,
+                amount: value.Amount,
+                type: value.options
+            }).unwrap();
+            // console.log(data);
+            // setLebal((pre) => {
+            //     return [...pre, data];
+            // })
             action.resetForm()
         }
     });
+
     return (
         <div className='form_box'>
             <form action="#"
@@ -45,7 +60,7 @@ const Form = () => {
                         <input
                             name='Amount' type="text" placeholder='Amount'
                             className='form_input'
-                            value={values.Amount}
+                            value={+values.Amount}
                             onChange={handleChange}
                             onBlur={handleBlur}
                         ></input>
@@ -55,7 +70,7 @@ const Form = () => {
                     </div>
                 </div>
             </form>
-            <List />
+            <List listData={listData} />
         </div>
     )
 }

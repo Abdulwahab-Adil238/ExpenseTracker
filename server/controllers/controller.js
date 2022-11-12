@@ -7,10 +7,9 @@ const { categories, transactions } = Model;
 //   post:http://localhost:3001/api/categories
 const create_categories = async (req, res) => {
 
-    // creating category 
     const Create_Category = new categories({
-        type: "Expense",
-        color: "#C43095"
+        type: "Savings",
+        color: "rgb(255,205,86)"
     })
     await Create_Category.save((err) => {
         if (!err) return res.json("Category Created");
@@ -35,8 +34,8 @@ const create_transaction = async (req, res) => {
     //    passing the user data to transaction schema
     const myTransaction = await new transactions({
         name,
-        type,
         amount,
+        type,
         date: new Date()
     })
 
@@ -53,18 +52,12 @@ const get_transaction = async (req, res) => {
     res.status(200).send(AllTransaction);
 }
 
-//   delete:http://localhost:3001/api/transaction/:id
-const delete_transaction = async (req, res) => {
-
-    if (!req.body) return res.status(400)
-        .json({ message: "Request Body not found" });
-
-    await transactions.findByIdAndDelete(req.params.id, (err) => {
-        if (!err) res.status(200).json("record Deleted");
-    }).clone().catch((err) => {
-        return res.json(400).json({ message: "Error while deleting Trnasaction record" })
-    })
-
+//   delete:http://localhost:3001/api/transaction
+async function delete_Transaction(req, res) {
+    if (!req.body) res.status(400).json({ message: "Request body not Found" });
+    await transactions.deleteOne(req.body, function (err) {
+        if (!err) res.json("Record Deleted...!");
+    }).clone().catch(function (err) { res.json("Error while deleting Transaction Record") });
 }
 //   get:http://localhost:3001/api/labels
 async function get_labels(req, res) {
@@ -83,7 +76,7 @@ async function get_labels(req, res) {
     ]).then(result => {
         const data = result.map((keys) => Object.assign({}, {
             _id: keys._id,
-            name: keys._name,
+            name: keys.name,
             type: keys.type,
             amount: keys.amount,
             color: keys.categories_info['color']
@@ -92,16 +85,14 @@ async function get_labels(req, res) {
     }).catch(error => {
         res.status(400).json({ message: "Look up connection error" })
     })
-
-
-
 }
+
 
 module.exports = {
     create_categories,
     get_categories,
     create_transaction,
     get_transaction,
-    delete_transaction,
+    delete_Transaction,
     get_labels
 }

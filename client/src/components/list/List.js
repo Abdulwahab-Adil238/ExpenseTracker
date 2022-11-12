@@ -1,17 +1,16 @@
 import React from 'react'
 import Transaction from '../Partials/Transaction/Transaction'
-import listData from './listData'
-const List = () => {
+const List = ({ listData, setLebal }) => {
     return (
         <>
             <h3 style={{ fontWeight: "bolder", fontSize: "1.2rem", textAlign: "center" }}>History</h3>
 
-            {listData.map((lebalData, index) => {
+            {listData !== 'undefined' ? listData.map((lebalData, index) => {
                 return (
-                    <Transaction key={index} lebelItem={lebalData} index={index} />
+                    <Transaction key={index} lebelItem={lebalData} index={index} setLebal={setLebal} />
                 )
-            })}
-            This is the form tage
+            }) : <h2>No Transaction</h2>
+            }
         </>
     )
 }
