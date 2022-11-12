@@ -1,0 +1,13 @@
+:root {
+    --color-yellow: #f9c74f;
+    --color-purple: #9d4edd;
+}
+
+.bg-yellow {
+    background-color: var(--color-yellow);
+    color: darkorange
+}
+
+.bg-purple {
+    background-color: var(--color-purple);
+}
